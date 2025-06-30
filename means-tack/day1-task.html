@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Day1</title>
+
+    <style>
+      table th,
+      table td {
+        border: 2px solid red;
+        margin: 2px;
+      }
+
+      table {
+        width: 50%;
+        margin: 30px auto;
+        text-align: center;
+      }
+    </style>
+  </head>
+  <body>
+    <table>
+      <thead>
+        <th>name</th>
+        <th>age</th>
+      </thead>
+      <tbody></tbody>
+    </table>
+    <script>
+      function getDayFullname(inputDate) {
+        let days = [
+          "saturday",
+          "sunday",
+          "monday",
+          "tuesday",
+          "wednesday",
+          "thursday",
+          "friday",
+        ];
+        let date = new Date(inputDate); //the passed parameter should be of type string start with the year then month then day separated by '/' or '-'
+        return days[date.getDay()]; //the method getDay() return the current day index from the week days
+      }
+      console.log(getDayFullname("2004/6/18"));
+      //the day fullname
+
+      function testInput(input) {
+        const regex = /^\d{2}-\d{2}-\d{4}$/;
+        if (regex.test(input)) {
+          let parts = input.split("-");
+          console.log(parts);
+          let date = new Date(parts[2], parts[1], parts[0]);
+          return date.toLocaleDateString();
+        } else {
+          return "wrong date format!";
+        }
+      }
+
+      let inputDate = prompt("enter date in the following foemat (dd-mm-yyyy)");
+      alert(testInput(inputDate));
+      //check input date
+
+      let tableBody = document.querySelector("tbody");
+      let personsNum = Number(
+        prompt("enter the number of persons you want to insert into table")
+      );
+      if (!isNaN(personsNum))
+        for (let i = 1; i <= personsNum; i++) {
+          let tr = document.createElement("tr");
+          let name = document.createElement("td");
+          name.innerText = prompt(`enter person${i}'s name`);
+          let age = document.createElement("td");
+          age.innerText = prompt(`enter person${i}'s age`);
+
+          tr.append(name, age);
+          tableBody.appendChild(tr);
+        }
+      else alert("you must enter a number value!");
+      //persons table
+    </script>
+  </body>
+</html>
