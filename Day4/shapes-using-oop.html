@@ -15,14 +15,14 @@
           width: width,
           length: length,
         };
-      } //factory function
-      let Rec1 = rectangle(5, 6);
+      } //factory function (reference)
+      let Rec1 = rectangle(5, 6); //(instance)
       Rec1["calcArea"] = function () {
         Rec1.area = Rec1["width"] * Rec1["length"];
       };
       Rec1["toString"] = function () {
         return (
-          "\trectangle\nArea: " +
+          "Area: " +
           Rec1["area"] +
           "\nlength: " +
           Rec1["length"] +
@@ -31,31 +31,39 @@
         );
       };
       Rec1.calcArea();
-      console.log(Rec1.toString());
+      display.bind(Rec1)("rectangle");
+      // display.call(Rec1, ["rectangle"]);
 
       function square(rip) {
         this.rip = rip;
       } //constructor function
       square.prototype.calcArea = function () {
-        this.area = Math.PI * this.rip * this.rip;
+        this.area = this.rip * this.rip;
       };
       square.prototype.toString = function () {
-        return "\nArea: " + this.area + "\nrip-length: " + this.rip;
+        return "Area: " + this.area + "\nrip-length: " + this.rip;
       };
       let Sq1 = new square(5);
       Sq1.calcArea();
       let Sq2 = Object.create(square.prototype);
+      Sq2.rip = 3; //we must declare this property separately as square.prototype include declared methods only
       Sq2.calcArea();
-      console.log(
-        "\t square1" + Sq1.toString() + "\n\n\tsquare2" + Sq2.toString()
-      );
+      display.call(Sq1, "square1");
+      display.apply(Sq2, ["square2", 7]);
 
       let circle = {
         radius: 7,
         area: 154,
       };
       let Cir1 = Object.create(circle);
-      console.log("\tcircle\nArea: " + Cir1.area + "\nradius: " + Cir1.radius);
+      Cir1.toString = function () {
+        return "Area: " + Cir1.area + "\nradius: " + Cir1.radius;
+      };
+      display.call(Cir1, "circle");
+
+      function display(type) {
+        console.log(`\t${type}\n` + this.toString());
+      }
       //js
 
       console.log(
