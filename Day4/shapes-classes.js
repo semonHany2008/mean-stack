@@ -1,10 +1,13 @@
 export class Shape {
-  area;
+  #dimension;
   constructor(d) {
     if (this.constructor == Shape) {
       throw "invalid object creation!";
     } //this condition handle the class as abstract to prevent object creation directly from, but still inheritable by other classes.
-    this.dimension = d;
+    this.#dimension = d;
+  }
+  get dimension(){
+    return this.#dimension;
   }
   toString() {}
 }
