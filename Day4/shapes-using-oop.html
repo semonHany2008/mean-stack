@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>shapes</title>
+  </head>
+  <body>
+    <script type="module">
+      console.log(
+        "\t\tshapes using traditional javaScript functions [factoryF, constructorF, Object.create()]"
+      );
+      function rectangle(width, length) {
+        return {
+          width: width,
+          length: length,
+        };
+      } //factory function
+      let Rec1 = rectangle(5, 6);
+      Rec1["calcArea"] = function () {
+        Rec1.area = Rec1["width"] * Rec1["length"];
+      };
+      Rec1["toString"] = function () {
+        return (
+          "\trectangle\nArea: " +
+          Rec1["area"] +
+          "\nlength: " +
+          Rec1["length"] +
+          ", width: " +
+          Rec1["width"]
+        );
+      };
+      Rec1.calcArea();
+      console.log(Rec1.toString());
+
+      function square(rip) {
+        this.rip = rip;
+      } //constructor function
+      square.prototype.calcArea = function () {
+        this.area = Math.PI * this.rip * this.rip;
+      };
+      square.prototype.toString = function () {
+        return "\nArea: " + this.area + "\nrip-length: " + this.rip;
+      };
+      let Sq1 = new square(5);
+      Sq1.calcArea();
+      let Sq2 = Object.create(square.prototype);
+      Sq2.calcArea();
+      console.log(
+        "\t square1" + Sq1.toString() + "\n\n\tsquare2" + Sq2.toString()
+      );
+
+      let circle = {
+        radius: 7,
+        area: 154,
+      };
+      let Cir1 = Object.create(circle);
+      console.log("\tcircle\nArea: " + Cir1.area + "\nradius: " + Cir1.radius);
+      //js
+
+      console.log(
+        "***** shapes using ES6(EcmaScript) classes and objects *****"
+      );
+      import { Rectangle, Circle, Square, Shape } from "./shapes-classes.js";
+
+      let sq1 = new Square(5);
+      sq1.calcArea();
+      sq1.display();
+
+      let rec1 = new Rectangle(6, 8);
+      rec1.calcArea();
+      rec1.display();
+
+      let cir1 = new Circle(3);
+      cir1.calcArea();
+      cir1.display();
+
+      let shape = new Shape(9); //will throw error
+      //ES6
+    </script>
+  </body>
+</html>
