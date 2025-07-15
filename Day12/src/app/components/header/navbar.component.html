@@ -1,0 +1,42 @@
+<header>
+  <nav>
+    <ul class="unordered-list">
+      <li><a routerLink="/">Home</a></li>
+      <li><a routerLink="/pizza">pizza</a></li>
+      <li><a routerLink="/pasta">pasta</a></li>
+      <li><a routerLink="/cake">cake</a></li>
+      <li><a routerLink="/Kebab">kebab</a></li>
+      <li><a routerLink="/Mango">mango</a></li>
+      <li><a routerLink="/popcorn">popcorn</a></li>
+      <li><a routerLink="/hamburger">hamburger</a></li>
+      <li><a routerLink="/fries">fries</a></li>
+      <li><a routerLink="/chips">Cookies</a></li>
+      <li><a routerLink="/chicken">chicken</a></li>
+      <li><a routerLink="/croissant">croissant</a></li>
+      <li><a routerLink="/ice cream">ice cream</a></li>
+    </ul>
+
+    <div class="dropdown-list">
+      <button (click)="listToggle = listToggle ? false : true">
+        <i class="fa-solid fa-bars"></i>
+      </button>
+
+      <select name="" *ngIf="listToggle">
+        <option selected disabled>select option</option>
+        <option value=""><a href="">home</a></option>
+        <option><a routerLink="/pizza">pizza</a></option>
+        <option><a routerLink="/pasta">pasta</a></option>
+        <option><a routerLink="/cake">cake</a></option>
+        <option><a routerLink="/Kebab">kebab</a></option>
+        <option><a routerLink="/Mango">mango</a></option>
+        <option><a routerLink="/popcorn">popcorn</a></option>
+        <option><a routerLink="/hamburger">hamburger</a></option>
+        <option><a routerLink="/fries">fries</a></option>
+        <option><a routerLink="/chips">Cookies</a></option>
+        <option><a routerLink="/chicken">chicken</a></option>
+        <option><a routerLink="/croissant">croissant</a></option>
+        <option><a routerLink="/ice cream">ice cream</a></option>
+      </select>
+    </div>
+  </nav>
+</header>
