@@ -1,9 +1,0 @@
-export const verifyRole = (req, res, next) => {
-  if (req.users.role !== "admin")
-    return res.status(403).json({ message: "Access denied, admin only!" });
-  else {
-    next();
-  }
-};
-
-//note: req content differ from one request to another
