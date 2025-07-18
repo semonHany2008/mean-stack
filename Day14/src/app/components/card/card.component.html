@@ -1,0 +1,9 @@
+<div class="card" [id]="meal._id">
+  <img [src]="meal.image" />
+  <h3>{{ meal.title }}</h3>
+  <div class="btn-group">
+    <button>details</button>
+    <button (click)="handleAddToCart()">add to cart</button>
+    <button (click)="handleDeleteProduct()">Delete(DB)</button>
+  </div>
+</div>
