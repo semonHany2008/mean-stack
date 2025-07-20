@@ -1,0 +1,17 @@
+<div class="card" [id]="meal._id">
+  <img [src]="meal.image" />
+  <h3>{{ meal.title }}</h3>
+  <span *ngIf="page == 'cart'"
+    ><strong>Quantity: </strong>{{ meal.quantity }}</span
+  >
+  <div class="btn-group">
+    <button (click)="showDetails()">details</button>
+    <button *ngIf="page == 'category'" (click)="handleAddToCart()">
+      add to cart
+    </button>
+    <button *ngIf="page == 'cart'" (click)="handleDeleteFromCart()">
+      delete from cart
+    </button>
+    <button (click)="handleDeleteProduct()">Delete(DB)</button>
+  </div>
+</div>

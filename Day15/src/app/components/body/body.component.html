@@ -1,0 +1,27 @@
+<div class="container" *ngIf="meals?.length">
+  <app-card
+    *ngFor="let meal of meals"
+    [meal]="meal"
+    [cartProducts]="cartProducts"
+    page="category"
+    (showDetailsModal)="showModal($event)"
+  ></app-card>
+</div>
+
+<div
+  class="custom-modal-wrapper d-flex justify-content-center align-items-center"
+  *ngIf="selectedMeal"
+>
+  <div class="custom-modal bg-light">
+    <span
+      (click)="selectedMeal = null"
+      class="close d-flex justify-content-center align-items-center fs-1 fw-bold"
+      >&times;</span
+    >
+    <div class="card">
+      <img [src]="selectedMeal.image" />
+      <h3>{{ selectedMeal.title }}</h3>
+      <p>{{ selectedMeal.description }}</p>
+    </div>
+  </div>
+</div>

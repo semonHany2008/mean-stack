@@ -1,0 +1,15 @@
+header {
+  height: 100px;
+  background-color: #000;
+  padding: 20px;
+  border-radius: 10px;
+}
+
+span.signIn {
+  font-size: 1.3em;
+  color: white;
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  background-color: #000;
+}
